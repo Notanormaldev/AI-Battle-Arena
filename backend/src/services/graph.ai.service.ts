@@ -7,10 +7,10 @@ import { createAgent,providerStrategy } from "langchain";
 
 
 const State = new StateSchema({
-  messages: MessagesValue,
+   messages: MessagesValue,
   solution_1:new ReducedValue(z.string().default(""),{
     reducer:(current,next)=>{
-        return next
+        return  next
     }
   }),
   solution_2:new ReducedValue(z.string().default(""),{
