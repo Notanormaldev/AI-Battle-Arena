@@ -2,7 +2,7 @@ import { START, StateGraph,StateSchema,type GraphNode } from "@langchain/langgra
 import z from 'zod'
 import { coheremodal, geminimodal, mistralmodal } from "./model.ai.js";
 import {createAgent ,HumanMessage,providerStrategy} from "langchain"
-,
+
 const state = new StateSchema({
    problem: z.string().default(''),
    solution_1:z.string().default(''),
@@ -27,11 +27,11 @@ const solutionnode:GraphNode<typeof state>=async(state)=>{
 
     return{
         solution_1:mistralresponse,
-        solution_2:coheremodal
+        solution_2:cohereresponse
     }
 }
 const judgenode:GraphNode<typeof state>=async(state)=>{
-    const {problem,solution_1,solution_2}=state,
+    const {problem,solution_1,solution_2}=state
 
 
     const agent = createAgent({
@@ -59,6 +59,15 @@ const judgenode:GraphNode<typeof state>=async(state)=>{
 
 
      const {solution_1_reason,solution_1_score,solution_2_reason,solution_2_score}=judgerespons.structuredResponse
+
+     return {
+        judge:{
+            solution_1_score,
+            solution_1_reson,
+            solution_2_score,
+            solution_2_reson
+        }
+     }
 }
 
 const graph = new StateGraph(state)
@@ -68,3 +77,15 @@ const graph = new StateGraph(state)
 .addEdge("solutionnode","judgenode")
 .addEdge("judgenode",END)
 .compile()
+
+
+export default async function rungarph(problem:string){
+    const result = await graph.invoke({
+        problem:problem
+    })
+
+    return result
+
+
+
+}
