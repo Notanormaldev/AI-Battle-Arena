@@ -1,7 +1,8 @@
+import { log } from "node:console";
+import app from "./src/app.js";
 
-import app from './src/app.js';
 
-app.listen(3000,()=>{
-    console.log('Run on 3000 port');
-    
+let PORT=process.env.PORT || 3000
+app.listen(PORT ,()=>{
+    console.log(`server run on ${PORT}`);  
 })
