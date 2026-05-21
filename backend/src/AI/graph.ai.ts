@@ -1,4 +1,4 @@
-import { START, StateGraph,StateSchema,type GraphNode } from "@langchain/langgraph";
+import { START, StateGraph,StateSchema,type GraphNode ,END} from "@langchain/langgraph";
 import z from 'zod'
 import { coheremodal, geminimodal, mistralmodal } from "./model.ai.js";
 import {createAgent ,HumanMessage,providerStrategy} from "langchain"
@@ -26,8 +26,8 @@ const solutionnode:GraphNode<typeof state>=async(state)=>{
     ])
 
     return{
-        solution_1:mistralresponse,
-        solution_2:cohereresponse
+        solution_1:mistralresponse.text,
+        solution_2:cohereresponse.text
     }
 }
 const judgenode:GraphNode<typeof state>=async(state)=>{
@@ -63,9 +63,9 @@ const judgenode:GraphNode<typeof state>=async(state)=>{
      return {
         judge:{
             solution_1_score,
-            solution_1_reson,
+            solution_1_reason,
             solution_2_score,
-            solution_2_reson
+            solution_2_reason
         }
      }
 }
