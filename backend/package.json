@@ -17,6 +17,7 @@
     "@langchain/google": "^0.1.12",
     "@langchain/langgraph": "^1.3.2",
     "@langchain/mistralai": "^1.0.8",
+    "@types/cors": "^2.8.19",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "langchain": "^1.4.1",
