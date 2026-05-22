@@ -13,6 +13,15 @@
     background-color: #1A1208; /* Ink Black background */
     color: #1A1208;
   }
+  
+  /* Hide browser scrollbars completely */
+  ::-webkit-scrollbar {
+    display: none !important;
+  }
+  html, body {
+    -ms-overflow-style: none !important;  /* IE and Edge */
+    scrollbar-width: none !important;  /* Firefox */
+  }
 }
 
 /* Custom Utilities and Aesthetic Layers */
