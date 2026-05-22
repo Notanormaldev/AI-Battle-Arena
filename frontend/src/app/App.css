@@ -1,0 +1,174 @@
+@import "tailwindcss";
+
+/* ----------------------------------------------------
+   COURTROOM STYLING SYSTEM
+   Strictly vintage physical aesthetic. No neon, gradients,
+   glassmorphism, or modern sans-serif colors.
+---------------------------------------------------- */
+
+/* Google Fonts Declarations */
+@layer base {
+  body {
+    font-family: 'Crimson Text', serif;
+    background-color: #1A1208; /* Ink Black background */
+    color: #1A1208;
+  }
+}
+
+/* Custom Utilities and Aesthetic Layers */
+
+/* Typewriter/Parchment Paper Noise Effect */
+.paper-texture {
+  position: relative;
+  background-color: #E8DFC8; /* aged parchment */
+}
+.paper-texture::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.035;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Legal Pad Ruling effect */
+.legal-pad-ruled {
+  position: relative;
+  background-color: #F2EAC4; /* legal pad yellow */
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 27px,
+    rgba(139, 115, 85, 0.08) 27px,
+    rgba(139, 115, 85, 0.08) 28px
+  );
+  background-size: 100% 28px;
+  line-height: 28px !important;
+}
+
+/* Legal pad red margin vertical line */
+.legal-pad-margin {
+  position: relative;
+}
+.legal-pad-margin::before {
+  content: "";
+  position: absolute;
+  left: 2.5rem;
+  top: 0;
+  bottom: 0;
+  width: 1.5px;
+  border-left: 1px solid rgba(139, 32, 32, 0.25); /* faded red stamp color */
+  pointer-events: none;
+}
+
+/* Typography Helpers */
+.font-playfair {
+  font-family: 'Playfair Display', serif;
+}
+
+.font-crimson {
+  font-family: 'Crimson Text', serif;
+}
+
+.font-lora {
+  font-family: 'Lora', serif;
+}
+
+.font-courier {
+  font-family: 'Courier Prime', monospace;
+}
+
+.font-elite {
+  font-family: 'Special Elite', monospace;
+}
+
+/* Brass engraving styles */
+.brass-plate {
+  background-color: #8B7355;
+  color: #F5F0E8;
+  border: 1px solid #4A2C17;
+  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.4);
+  box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.2), 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.brass-plate-dark {
+  border: 2px solid #8B7355;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+/* Double ruled border elements */
+.border-double-court {
+  border-style: double;
+  border-color: #8B7355;
+  border-width: 4px;
+}
+
+/* Custom Scrollbar for Courtroom documents */
+.court-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+.court-scroll::-webkit-scrollbar-track {
+  background: #2C1F0F;
+}
+.court-scroll::-webkit-scrollbar-thumb {
+  background: #8B7355;
+  border: 2px solid #2C1F0F;
+}
+
+/* Gavel rotation animation */
+@keyframes strike {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(-35deg); }
+  50% { transform: rotate(10deg); }
+  70% { transform: rotate(-5deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.strike-gavel {
+  animation: strike 0.6s ease-out;
+}
+
+/* Wax Seal Stamp Animation */
+@keyframes stampIn {
+  0% {
+    opacity: 0;
+    transform: scale(3) rotate(15deg);
+    filter: blur(4px);
+  }
+  70% {
+    opacity: 0.9;
+    transform: scale(0.9) rotate(-4deg);
+    filter: none;
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(2deg);
+  }
+}
+
+.wax-seal-animate {
+  animation: stampIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* Custom Blinking Cursor */
+.typewriter-cursor::after {
+  content: "█";
+  margin-left: 2px;
+  animation: blink 0.8s infinite;
+  color: #1A1208;
+  font-size: 0.9rem;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+/* Old typewriter ink smudge effect */
+.typewriter-smudge {
+  filter: contrast(120%) brightness(95%);
+  letter-spacing: -0.01em;
+}
