@@ -11,12 +11,12 @@
   ╚═════╝ ╚═╝  ╚═╝   ╚═╝      ╚═╝   ╚══════╝╚══════╝    ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═══╝╚═╝  ╚═╝
 ```
 
-### *Watch the world's most powerful AI models go head-to-head. Only one wins.*
+### *The High Court of Artificial Intelligence — where AI models argue, and an AI judge decides.*
 
 <br/>
 
-[![Live Demo](https://img.shields.io/badge/⚡_LIVE_DEMO-Visit_Now-FF4500?style=for-the-badge&logoColor=white)](https://ai-battle-arena-ds7b.onrender.com/)
-![LangGraph](https://img.shields.io/badge/LangGraph-Orchestration-1a1a2e?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIgc3Ryb2tlPSIjNjM2NkYxIiBzdHJva2Utd2lkdGg9IjIiLz48L3N2Zz4=&logoColor=white)
+[![Live Demo](https://img.shields.io/badge/⚡_LIVE_DEMO-Enter_The_Court-8B4513?style=for-the-badge&logoColor=white)](https://ai-battle-arena-ds7b.onrender.com/)
+![LangGraph](https://img.shields.io/badge/LangGraph-Multi--Agent_Orchestration-1a1a2e?style=for-the-badge)
 ![LangChain](https://img.shields.io/badge/LangChain-AI_Framework-00A67E?style=for-the-badge)
 ![TypeScript](https://img.shields.io/badge/TypeScript-Backend-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
 ![Node.js](https://img.shields.io/badge/Node.js-Runtime-339933?style=for-the-badge&logo=node.js&logoColor=white)
@@ -29,11 +29,11 @@
 
 <br/>
 
-## ⚔️ What is AI Battle Arena?
+## ⚖️ Order in the Court
 
-**AI Battle Arena** is a real-time platform where multiple large language models compete against each other on the same prompt — simultaneously. You pick the question. The AIs fight for the best answer. You decide who wins.
+**AI Battle Arena** is a courtroom-themed AI battle platform. You submit a prompt — called a **Brief** — and two AI models argue their case side by side. A third AI model sits as the **Presiding Judge** and delivers a binding verdict with scores and judicial reasoning.
 
-No benchmarks. No synthetic tests. Just raw, unfiltered AI intelligence — judged by you.
+No human bias. No subjective opinion. Pure AI vs AI — judged by AI.
 
 <br/>
 
@@ -45,37 +45,21 @@ No benchmarks. No synthetic tests. Just raw, unfiltered AI intelligence — judg
 
 <br/>
 
-## 🧠 The Intelligence Stack
+## 🏛️ The Courtroom — UI Breakdown
 
-At its core, AI Battle Arena is built on a **stateful multi-agent orchestration pipeline** powered by **LangGraph** — a graph-based execution engine that coordinates multiple AI agents with full control over state, routing, and parallelism.
-
-**LangChain** acts as the universal adapter layer, standardizing communication across wildly different AI providers so every model gets the same prompt, under the same conditions, with zero bias.
+Every element of the interface is designed around a real courtroom. This isn't just a theme — it's the entire interaction model.
 
 <br/>
 
-```
-                          ┌─────────────────────────┐
-                          │      User Prompt         │
-                          └────────────┬────────────┘
-                                       │
-                          ┌────────────▼────────────┐
-                          │    LangGraph Orchestrator │
-                          │    (State Machine)        │
-                          └──┬────────┬──────────┬──┘
-                             │        │          │
-               ┌─────────────▼─┐  ┌───▼──────┐  ┌▼──────────────┐
-               │  Google Gemini │  │  Mistral  │  │    Cohere      │
-               └───────────────┘  └──────────┘  └────────────────┘
-                             │        │          │
-                          ┌──▼────────▼──────────▼──┐
-                          │     Response Aggregator   │
-                          │     (LangChain Unified)   │
-                          └─────────────┬────────────┘
-                                        │
-                          ┌─────────────▼────────────┐
-                          │      Battle Results        │
-                          └──────────────────────────┘
-```
+| Element | Role | Description |
+|---------|------|-------------|
+| ⚖️ **The Bench** | Presiding Judge | Google Gemini AI — delivers the final verdict with score and judicial reasoning |
+| 🏛️ **Witness Box I & II** | Counsel AI-1 & AI-2 | Mistral AI (Defense) and Cohere AI (Prosecution) present their answers side by side |
+| 📁 **Case File** | Center Panel | Displays the litigation subject (your prompt) — the matter before the court |
+| 🎙️ **The Podium** | Input Bar | Where you submit your brief — the bottom input that initiates the session |
+| 📋 **Court Ledger** | History Drawer | Collapsible panel (top right) that stores all past dockets and sessions |
+| 📜 **Dockets** | Prompt History | Previous prompts listed under the Case File — select any to revisit that battle |
+| 🔴 **Judicial Finding** | Verdict Card | Score badge + judge's written reasoning rendered under each Witness Box |
 
 <br/>
 
@@ -84,6 +68,46 @@ At its core, AI Battle Arena is built on a **stateful multi-agent orchestration 
 ![Screenshot 2](./assets/2.png)
 
 </div>
+
+<br/>
+
+## 🧠 The Intelligence Stack
+
+Under the hood, the courtroom runs on a **stateful multi-agent LangGraph pipeline** — a graph-based execution engine that coordinates three AI agents with full control over parallel dispatch, state, and verdict aggregation.
+
+**LangChain** acts as the universal adapter layer so every model receives the exact same prompt under identical conditions — zero bias, maximum fairness.
+
+<br/>
+
+```
+                        ┌──────────────────────────────┐
+                        │    Brief (User Prompt)        │
+                        │    Submitted at The Podium    │
+                        └──────────────┬───────────────┘
+                                       │
+                        ┌──────────────▼───────────────┐
+                        │     LangGraph Orchestrator    │
+                        │     (Stateful Agent Graph)    │
+                        └───┬──────────────────────┬───┘
+                            │  parallel dispatch   │
+              ┌─────────────▼──┐              ┌────▼──────────────┐
+              │  Witness Box I  │              │  Witness Box II    │
+              │  Mistral AI     │              │  Cohere AI         │
+              │  (Defense)      │              │  (Prosecution)     │
+              └─────────────┬──┘              └────┬──────────────┘
+                            │                      │
+                        ┌───▼──────────────────────▼───┐
+                        │         THE BENCH             │
+                        │      Google Gemini AI         │
+                        │      (Presiding Judge)        │
+                        │  Scores + Judicial Reasoning  │
+                        └───────────────────────────────┘
+                                       │
+                        ┌──────────────▼───────────────┐
+                        │    Verdict Delivered           │
+                        │    Logged to Court Ledger      │
+                        └──────────────────────────────┘
+```
 
 <br/>
 
@@ -96,7 +120,7 @@ At its core, AI Battle Arena is built on a **stateful multi-agent orchestration 
 ### Backend
 - **Runtime** — Node.js + TypeScript (ESM)
 - **Framework** — Express v5
-- **AI Orchestration** — LangGraph (stateful agent graphs)
+- **AI Orchestration** — LangGraph (stateful multi-agent graph)
 - **AI Framework** — LangChain (unified provider interface)
 - **AI Providers** — Google Gemini · MistralAI · Cohere
 - **Schema Validation** — Zod
@@ -109,8 +133,8 @@ At its core, AI Battle Arena is built on a **stateful multi-agent orchestration 
 
 ### Frontend
 - **Core** — JavaScript · HTML · CSS
+- **Theme** — Vintage Courtroom (custom hand-crafted)
 - **Architecture** — Single Page Application
-- **Styling** — Custom CSS (no frameworks)
 - **Communication** — REST API
 - **Deploy** — Render (Static Site)
 
@@ -120,36 +144,27 @@ At its core, AI Battle Arena is built on a **stateful multi-agent orchestration 
 
 <br/>
 
-<div align="center">
+## 🔬 How LangGraph Runs the Trial
 
-![Screenshot 3](./assets/3.png)
+Each battle is a **compiled LangGraph graph** with discrete, stateful nodes:
 
-</div>
+- **Dispatch Node** — Fans out the brief to both Counsel nodes simultaneously in parallel
+- **Counsel Nodes** — Mistral and Cohere run as isolated agents with independent retry and timeout handling
+- **Judge Node** — Google Gemini receives both responses and evaluates them, returning a score and written judicial finding for each
+- **Aggregation Node** — Collects the full trial record, normalizes it via LangChain's unified schema, and commits it to the Court Ledger
+- **State** — The entire session (prompt → responses → verdict → scores) flows through a typed state object, making every trial reproducible
 
-<br/>
-
-## 🔬 How LangGraph Powers the Battles
-
-LangGraph enables something standard API calls can't — **stateful, parallel, conditional multi-agent execution**.
-
-Each battle is a **compiled graph** with discrete nodes:
-
-- **Dispatch Node** — Fans out the prompt to all registered model nodes in parallel
-- **Model Nodes** — Each AI provider runs as an isolated node with its own retry logic and timeout handling
-- **Aggregation Node** — Collects all responses, normalizes them via LangChain's unified schema, and prepares the battle result
-- **State** — The entire battle lifecycle (prompt → responses → metadata) flows through a typed state object, enabling reproducibility and debugging
-
-This graph-based approach means adding a new AI model is as simple as adding a new node — the orchestration logic stays untouched.
+Adding a new AI model = adding a new Counsel node. The judge and orchestration logic stay untouched.
 
 <br/>
 
-## 🤖 Models in the Arena
+## 🤖 Court Constituents
 
-| Model | Provider | Specialty |
-|-------|----------|-----------|
-| **Gemini** | Google | Multimodal reasoning, long context |
-| **Mistral** | MistralAI | Efficiency, European AI sovereignty |
-| **Command R** | Cohere | RAG-optimized, enterprise reasoning |
+| Role | Model | Provider |
+|------|-------|----------|
+| ⚖️ **Presiding Judge** | Gemini | Google |
+| 🛡️ **Defense Counsel** | Mistral | MistralAI |
+| ⚔️ **Prosecution Counsel** | Command R | Cohere |
 
 <br/>
 
@@ -157,9 +172,11 @@ This graph-based approach means adding a new AI model is as simple as adding a n
 
 <div align="center">
 
-**Built with obsession. Powered by chaos.**
+*"UPON DUE CONSIDERATION of the compelling pleadings filed herein..."*
 
-[![Live Demo](https://img.shields.io/badge/⚡_Enter_the_Arena-FF4500?style=for-the-badge)](https://ai-battle-arena-ds7b.onrender.com/)
+**The Court is now in session.**
+
+[![Enter the Arena](https://img.shields.io/badge/⚖️_Enter_The_Court-8B4513?style=for-the-badge)](https://ai-battle-arena-ds7b.onrender.com/)
 
 <br/>
 
