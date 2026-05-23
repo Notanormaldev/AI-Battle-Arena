@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "tsx watch server.ts",
-  "build": "tsc",
+  "build": "tsc --noEmitOnError false",
   "start": "node dist/server.js"
 
   },
