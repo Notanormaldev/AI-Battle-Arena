@@ -11,7 +11,7 @@ function CaseFileColumn({ problem, presetCases, isSubmitting, onSelectPreset }) 
         <span className="text-[10px] tracking-[0.25em] text-[#8B7355] font-mono block">════════════════</span>
       </div>
 
-      {/* Active case content styled like old typewriter text */}
+   
       <div className="flex-1 flex flex-col justify-center items-center py-4 my-2 px-2 border-t border-b border-[#8B7355]/30">
         <div className="w-full text-center">
           <span className="font-courier text-[10px] text-[#8B2020] tracking-wider uppercase block mb-2 select-none">
@@ -23,7 +23,7 @@ function CaseFileColumn({ problem, presetCases, isSubmitting, onSelectPreset }) 
         </div>
       </div>
 
-      {/* Preset Case Selector list at bottom of parchment strip */}
+  
       <div className="mt-auto pt-4 border-t border-dashed border-[#8B7355]/30 w-full select-none">
         <span className="font-courier text-[9px] text-[#8B7355] tracking-wider uppercase block text-center mb-3">
           📜 PRECEDENTS / DOCKETS

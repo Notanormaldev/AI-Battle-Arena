@@ -7,7 +7,7 @@ function Podium({ problem, setProblem, isSubmitting, onSubmit, gavelStrike }) {
         onSubmit={onSubmit}
         className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center gap-4"
       >
-        {/* Gavel icon on the left */}
+    
         <div className="flex items-center gap-3 select-none">
           <svg
             className={`w-10 h-10 text-[#8B7355] ${gavelStrike ? "strike-gavel" : ""}`}
@@ -25,7 +25,7 @@ function Podium({ problem, setProblem, isSubmitting, onSubmit, gavelStrike }) {
           </div>
         </div>
 
-        {/* Text Input in the center */}
+    
         <div className="flex-1 w-full">
           <input
             type="text"
@@ -38,7 +38,6 @@ function Podium({ problem, setProblem, isSubmitting, onSubmit, gavelStrike }) {
           />
         </div>
 
-        {/* Submit Button on the right */}
         <button
           type="submit"
           disabled={isSubmitting || !problem.trim()}

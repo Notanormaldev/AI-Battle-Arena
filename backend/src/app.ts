@@ -1,21 +1,17 @@
 import express from 'express'
 import rungarph from './AI/graph.ai.js';
+import cors from 'cors'
+import path from 'path';
 
 const app = express();
 
-// Simple, clean CORS middleware to allow the frontend to communicate
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-  if (req.method === "OPTIONS") {
-    return res.sendStatus(200);
-  }
-  next();
-});
+
+app.use(cors({
+  origin:"https://ai-battle-arena-ds7b.onrender.com"
+}))
 
 app.use(express.json())
-
+app.use(express.static('./public'))
 app.post('/invoke', async (req, res) => {
   const { input } = req.body
 
@@ -30,6 +26,11 @@ app.post('/invoke', async (req, res) => {
       error: error.message || "Failed to execute debate"
     });
   }
+})
+
+app.use('*name',(req,res)=>{
+    res.sendFile(path.join(__dirname , ".." , './public/index.html'))
+
 })
 
 export default app;

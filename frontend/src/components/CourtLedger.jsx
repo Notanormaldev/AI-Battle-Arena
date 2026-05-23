@@ -8,7 +8,8 @@ function CourtLedger({ showLedger }) {
       <div className="space-y-2 w-full md:w-2/3">
         <h4 className="font-playfair text-[#8B2020] uppercase font-bold text-sm tracking-wider">COURT CLERK'S RECORD</h4>
         <p className="font-crimson text-sm text-[#2C1F0F]">
-          This courtroom is powered by a multi-agent LangGraph network hosted on local Port 3000.
+       This courtroom is powered by a multi-agent 
+LangGraph network hosted on Render.
         </p>
       </div>
 

@@ -16,10 +16,10 @@ function App() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showLedger, setShowLedger] = useState(false);
 
-  // Gavel visual strike effect trigger
+ 
   const [gavelStrike, setGavelStrike] = useState(false);
 
-  // Interactive state machine values
+ 
   const [ai1Text, setAi1Text] = useState("");
   const [ai2Text, setAi2Text] = useState("");
   const [verdictText, setVerdictText] = useState("");
@@ -28,18 +28,18 @@ function App() {
   const [reason1Text, setReason1Text] = useState("");
   const [reason2Text, setReason2Text] = useState("");
   
-  // Text typewriter parameters
+
   const [showScores, setShowScores] = useState(false);
 
-  // Dynamic precedents/dockets list state (falls back to PRESET_CASES if history is empty)
+  
   const [dockets, setDockets] = useState(PRESET_CASES);
 
-  // Typewriter tick engine
+  
   const timer1Ref = useRef(null);
   const timer2Ref = useRef(null);
   const timer3Ref = useRef(null);
 
-  // Initialize Locomotive Scroll for smooth scrolling and restore state from localStorage
+
   useEffect(() => {
     let scroll;
     try {
@@ -48,7 +48,7 @@ function App() {
       console.warn("Locomotive Scroll could not be initialized:", err);
     }
 
-    // Restore state from localStorage key: ai-battle-arena-state
+   
     const rawState = localStorage.getItem('ai-battle-arena-state');
     if (rawState) {
       try {
@@ -83,7 +83,7 @@ function App() {
     };
   }, []);
 
-  // Helper to persist current case and history to localStorage
+
   const persistLitigationState = (probText, sol1, sol2, scoreVal1, scoreVal2, reas1, reas2, verd, shouldAppendHistory = false) => {
     let currentHistory = [];
     const rawState = localStorage.getItem('ai-battle-arena-state');
@@ -125,8 +125,7 @@ function App() {
         verdict: verd
       };
       
-      // Filter out duplicate problem entries if we want a unique history, or just keep pushing
-      // We will append to history and slice to max 3 items
+      
       updatedHistory = [...currentHistory, historyItem].slice(-3);
       setDockets(updatedHistory);
     }
@@ -140,7 +139,7 @@ function App() {
   };
 
   const triggerTypewriterReveal = (sol1, sol2, scoreVal1, scoreVal2, reas1, reas2, verd) => {
-    // Clear any active timers
+   
     if (timer1Ref.current) clearInterval(timer1Ref.current);
     if (timer2Ref.current) clearInterval(timer2Ref.current);
     if (timer3Ref.current) clearInterval(timer3Ref.current);
@@ -157,8 +156,7 @@ function App() {
 
     let idx1 = 0;
     let idx2 = 0;
-    
-    // Step 1: Type AI-1 and AI-2 solutions in parallel (simulating witness box testimony)
+   
     const runSolutions = () => {
       const maxLen1 = sol1.length;
       const maxLen2 = sol2.length;
@@ -166,7 +164,7 @@ function App() {
       timer1Ref.current = setInterval(() => {
         if (idx1 < maxLen1) {
           setAi1Text(sol1.substring(0, idx1 + 1));
-          idx1 += 2; // Type speed speed-up
+          idx1 += 2; 
         } else {
           clearInterval(timer1Ref.current);
           checkSolutionsFinished();
@@ -192,7 +190,7 @@ function App() {
       if (idx2 >= sol2.length) sol2Finished = true;
 
       if (sol1Finished && sol2Finished) {
-        // Once both solutions finish typing, reveal the scores with a stamp slam and start the judge's verdict
+        
         setShowScores(true);
         setTimeout(() => {
           runJudgeVerdict();
@@ -200,7 +198,7 @@ function App() {
       }
     };
 
-    // Step 2: Type out the Judge's Bench Verdict
+
     const runJudgeVerdict = () => {
       let idx3 = 0;
       const maxLen3 = verd.length;
@@ -215,7 +213,7 @@ function App() {
       }, 25);
     };
 
-    // Start
+ 
     runSolutions();
   };
 
@@ -236,7 +234,7 @@ function App() {
       preset.verdict
     );
 
-    // Persist this selected case as the active case in localStorage (do not duplicate to custom dockets list)
+  
     persistLitigationState(
       preset.problem,
       preset.ai1,
@@ -260,9 +258,9 @@ function App() {
 
     const activeProblem = problem;
 
-    // Connect to Backend Endpoint
+
     try {
-      const response = await fetch("http://localhost:3000/invoke", {
+      const response = await fetch("https://ai-battle-arena-ds7b.onrender.com/invoke", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -280,13 +278,13 @@ function App() {
       if (data.result) {
         const { solution_1, solution_2, judge } = data.result;
         
-        // Handle alternative backend spellings ('reson' vs 'reason')
+      
         const scoreVal1 = judge.solution_1_score ?? 8.0;
         const scoreVal2 = judge.solution_2_score ?? 8.0;
         const reas1 = judge.solution_1_reason || judge.solution_1_reson || "SOUND DEFENSE ADVOCATED";
         const reas2 = judge.solution_2_reason || judge.solution_2_reson || "PRAGMATIC CONFLICT FILED";
         
-        // Generate formal verdict text matching high court double-rule requirements
+        
         const winner = scoreVal1 > scoreVal2 ? "COUNSEL AI-1" : scoreVal1 < scoreVal2 ? "COUNSEL AI-2" : "NEITHER COUNSEL";
         const verdict = `UPON DUE CONSIDERATION of the compelling pleadings filed herein, this Court has calculated the merits. AI-1 scores ${scoreVal1}/10 and AI-2 scores ${scoreVal2}/10. Therefore, this Court hereby decrees that ${winner} hath established the superior position. IT IS SO ORDERED.`;
 
@@ -317,7 +315,7 @@ function App() {
 
     } catch (err) {
       console.warn("Backend error, proceeding with premium procedural simulation:", err);
-      // Seamlessly fall back to simulation to ensure no broken state
+      
       const randomScore1 = parseFloat((8.0 + Math.random() * 2.0).toFixed(1));
       const randomScore2 = parseFloat((8.0 + Math.random() * 2.0).toFixed(1));
       
