@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import LocomotiveScroll from 'locomotive-scroll';
 
-// Constants
+
 import { PRESET_CASES } from '../constants/presets';
 
-// Components
+
 import JudgesBench from '../components/JudgesBench';
 import CourtLedger from '../components/CourtLedger';
 import WitnessBox from '../components/WitnessBox';
