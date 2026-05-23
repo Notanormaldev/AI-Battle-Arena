@@ -132,11 +132,13 @@ Under the hood, the courtroom runs on a **stateful multi-agent LangGraph pipelin
 <td valign="top" width="50%">
 
 ### Frontend
-- **Core** — JavaScript · HTML · CSS
+- **Framework** — React 19
+- **Build Tool** — Vite 7
+- **Styling** — Tailwind CSS v4
+- **Scroll** — Locomotive Scroll (smooth scroll)
 - **Theme** — Vintage Courtroom (custom hand-crafted)
 - **Architecture** — Single Page Application
-- **Communication** — REST API
-- **Deploy** — Render (Static Site)
+- **Deploy** — Render
 
 </td>
 </tr>
